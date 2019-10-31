@@ -29,7 +29,7 @@ public class UserMapperController {
         if (response.isSuccess()) {
             // 判断是否为管理员
             User user = (User) response.getData();
-            if (!Const.Role.ROLE_ADMIN.equals(user.getRole())) {
+            if (Const.Role.ROLE_ADMIN != user.getRole()) {
                 return ResponseResult.createByError("不是管理员，登陆失败");
             }
             session.setAttribute(Const.CURRENT_USER, user);
